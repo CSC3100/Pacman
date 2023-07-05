@@ -34,7 +34,7 @@ public class Main extends JFrame implements ActionListener {
 		westPanel.add(arcRadio);
 		add(westPanel,BorderLayout.WEST);
 		// draw panel
-		drawPanel = new DrawPanel();
+		drawPanel = new DrawArea();
 		drawPanel.setBackground(Color.LIGHT_GRAY);
 		drawPanel.setShape (rectangleRadio.getText());
 		drawPanel.setColor((String) colorMenu.getSelectedItem());

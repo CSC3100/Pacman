@@ -4,7 +4,7 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 # Pacman
-Illustrating multithreading concepts (Thread class and Runnable interface) through a Pacman game example.
+This program demonstrates multithreading concepts using a Pacman game example. A Timer object manages the Maze panel's repaint cycle at 10 frames per second. Both Pacman and the ghost are implemented as runnable threads, allowing their positions to update automatically. Pacman also utilizes key listeners, enabling user interaction to change its direction dynamically.
 <br>
 
 ## Running

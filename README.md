@@ -4,31 +4,18 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 # Pacman
-A Pong Game implemented as a Java Desktop Application to exemplify Client-Server architecture and multi-threading
+Illustrating multithreading concepts (Thread class and Runnable interface) through a Pacman game example.
 <br>
+
 ## Running
 
-To run the server run as:
+Run as:
 ```
-java -jar javiergs.PongGameServer
+java -jar Game
 ```
 
-To execute the client run as:
-```
-java -jar javiergs.PongGameClient
-```
 ## User Interface
 
-Running a server shows a panel where a player control left side and received client position via socket; running a client shows the player control right side and received server position via socket.
-
 <p align="center">
-<IMG SRC="https://github.com/CSC308/Pong-Game/assets/3814755/e826fbdb-e2aa-4c0f-b406-71a3b883743e" WIDTH=600>
-</p>
-
-
-## Blueprint
-A drafted class diagram of the current release is as follows:
-
-<p align="center">
-<img width="600" src="https://github.com/CSC3100/Pong-Game/assets/3814755/26cf5ecf-8172-4a36-8942-88b05d31b6e7">
+<IMG SRC="https://github.com/CSC3100/Pacman/assets/3814755/424da2d4-915c-44a3-8f53-a79d122a95e1" WIDTH=600>
 </p>

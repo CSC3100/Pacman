@@ -1,34 +1,55 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Maze extends JPanel {
-
-    private Drawable[] items = new Drawable[4];
-
-    public void paintComponent (Graphics g) {
-
-        super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
-        g.drawRect(0, 0, 500, 500);
-        for(int i = 0; i<500; i=i+10) {
-            g.drawLine(i, 0, i, 500);
-        }
-        for(int i = 0; i<500; i=i+10) {
-            g.drawLine(0, i, 500, i);
-        }
-        for(int i = 0; i<items.length; i++) {
-            items[i].draw(g);
-        }
-
-        ((Score)items[3]).increment();
-    }
-
-    Maze(Pacman pacman, Ghost ghost, Score score) {
-        items[0] = pacman;
-        items[1] = ghost;
-        items[2] = new PowerDot(300,30);
-        items[3] = score;
-    }
-
+/**
+ * Maze class contains the items to be drawn on the maze.
+ *
+ * @author javiergs
+ * @version 1.0
+ */
+public class Maze extends JPanel implements ActionListener {
+	
+	private Pacman pacman;
+	private Ghost ghost;
+	private PowerDot powerDot;
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.setColor(new Color(90, 140, 255));
+		g.fillRect(0, 0, 800, 600);
+		// collision pacman and ghost
+		if (pacman.getBounds().intersects(ghost.getBounds()))
+			ghost.reset();
+		// draw the characters
+		pacman.draw(g);
+		ghost.draw(g);
+		powerDot.draw(g);
+	}
+	
+	public Maze() {
+		// multi-threading ghost
+		ghost = new Ghost();
+		Thread ghostThread = new Thread(ghost);
+		ghostThread.start();
+		// multi-threading pacman
+		pacman = new Pacman();
+		Thread pacmanThread = new Thread(pacman);
+		pacmanThread.start();
+		// keyboard controlled pacman
+		NannyKeyboard nannyKeyboard = new NannyKeyboard(pacman);
+		addKeyListener(nannyKeyboard);
+		// timer
+		Timer timer = new Timer(100, this);
+		timer.start();
+		// and a power dot
+		powerDot = new PowerDot();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		repaint();
+	}
+	
 }

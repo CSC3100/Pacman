@@ -13,6 +13,7 @@ public class Game extends JFrame {
 	public static void main(String[] args) {
 		Game game = new Game();
 		game.setSize(800, 600);
+		game.setTitle("Pacman");
 		game.setVisible(true);
 		game.setResizable(false);
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

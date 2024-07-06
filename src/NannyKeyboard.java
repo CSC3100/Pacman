@@ -31,8 +31,6 @@ public class NannyKeyboard implements KeyListener {
 				 pacman.right();
 				break;
 		}
-		System.out.println("Pacman x: " + pacman.getX() + " y: " + pacman.getY());
-		System.out.println("Width: " + Maze.WIDTH + " Height: " + Maze.HEIGHT);
 	}
 	
 	@Override

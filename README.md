@@ -17,5 +17,5 @@ java -jar Game
 ## User Interface
 
 <p align="center">
-<IMG SRC="https://github.com/CSC3100/Pacman/assets/3814755/a97c1e54-4353-49ed-96d1-68a67bbc1089" WIDTH=600>
+<IMG SRC="https://github.com/CSC3100/Pacman/assets/3814755/95668dee-27bd-4226-b4e7-6a65fca38a77" WIDTH=600>
 </p>

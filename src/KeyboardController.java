@@ -2,16 +2,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * NannyKeyboard class is a KeyListener for Pacman movement.
+ * KeyboardController class control the movement of the Pacman object.
  *
  * @author javiergs
  * @version 1.0
  */
-public class NannyKeyboard implements KeyListener {
+public class KeyboardController implements KeyListener {
 	
 	private Pacman pacman;
 	
-	public NannyKeyboard(Pacman pacman) {
+	public KeyboardController(Pacman pacman) {
 		this.pacman = pacman;
 	}
 	
@@ -19,7 +19,7 @@ public class NannyKeyboard implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
 			case KeyEvent.VK_UP:
-				 pacman.up();
+				pacman.up();
 				break;
 			case KeyEvent.VK_DOWN:
 				pacman.down();
@@ -28,7 +28,7 @@ public class NannyKeyboard implements KeyListener {
 				pacman.left();
 				break;
 			case KeyEvent.VK_RIGHT:
-				 pacman.right();
+				pacman.right();
 				break;
 		}
 	}

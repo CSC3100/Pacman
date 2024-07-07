@@ -1,19 +1,22 @@
 import java.awt.*;
 
 /**
- * Ghost class contains the items to be drawn on the maze.
- * It is a thread that moves the ghost around the maze.
+ * Ghost class represents a ghost in the Pacman game.
+ * The ghost moves around the screen.
  *
  * @author javiergs
  * @version 1.0
  */
-public class Ghost extends Drawable implements Runnable {
+public class Ghost implements Runnable {
 	
-	private int SIZE = 50;
-	public static final int SPEED = 150;
+	private static final int SIZE = 50;
+	private static final int SPEED = 150;
+	private int x;
+	private int y;
 	
 	public Ghost() {
-		reset();
+		x = 25;
+		y = 25;
 	}
 	
 	@Override
@@ -29,13 +32,10 @@ public class Ghost extends Drawable implements Runnable {
 	}
 	
 	public void move() {
-		y -= SIZE/2;
-		if (y < 0) {
-			x += SIZE/2;
-			y = 600;
-		}
-		if (x > 800)
-			x = 0;
+		if (x == 25) y += SIZE / 2;
+		if (y > 470) x += SIZE / 2;
+		if (x > 700) y -= SIZE / 2;
+		if (y == 25) x -= SIZE / 2;
 	}
 	
 	public void draw(Graphics g) {
@@ -45,19 +45,11 @@ public class Ghost extends Drawable implements Runnable {
 		g.fillRect(x, y + SIZE / 2, SIZE, SIZE / 2);
 		// Draw the eyes
 		g.setColor(Color.WHITE);
-		g.fillOval(x + SIZE / 4, y + SIZE / 4, SIZE / 5, SIZE / 5);
-		g.fillOval(x + SIZE * 3 / 4 - SIZE / 5, y + SIZE / 4, SIZE / 5, SIZE / 5);
+		g.fillOval(x + SIZE / 4, y + SIZE / 4, SIZE / 4, SIZE / 4);
+		g.fillOval(x + SIZE * 3 / 4 - SIZE / 5, y + SIZE / 4, SIZE / 4, SIZE / 4);
 		g.setColor(Color.BLUE);
 		g.fillOval(x + SIZE / 4 + SIZE / 20, y + SIZE / 4 + SIZE / 20, SIZE / 10, SIZE / 10);
 		g.fillOval(x + SIZE * 3 / 4 - SIZE / 5 + SIZE / 20, y + SIZE / 4 + SIZE / 20, SIZE / 10, SIZE / 10);
 	}
 	
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, SIZE, SIZE);
-	}
-	
-	public void reset() {
-		x = 0;
-		y = 500;
-	}
 }

@@ -4,7 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Maze class contains the items to be drawn on the maze.
+ * Maze class that represents the maze of the game.
+ * It has a timer that repaints the maze every 100 milliseconds.
  *
  * @author javiergs
  * @version 1.0
@@ -13,43 +14,42 @@ public class Maze extends JPanel implements ActionListener {
 	
 	private Pacman pacman;
 	private Ghost ghost;
-	private PowerDot powerDot;
+	
+	public Maze(Pacman pacman, Ghost ghost) {
+		setBackground(Color.BLACK);
+		this.pacman = pacman;
+		this.ghost = ghost;
+		// notice the timer
+		Timer timer = new Timer(100, this);
+		timer.start();
+	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(new Color(90, 140, 255));
-		g.fillRect(0, 0, 800, 600);
-		// collision pacman and ghost
-		if (pacman.getBounds().intersects(ghost.getBounds()))
-			ghost.reset();
-		// draw the characters
+		background(g);
 		pacman.draw(g);
 		ghost.draw(g);
-		powerDot.draw(g);
-	}
-	
-	public Maze() {
-		// multi-threading ghost
-		ghost = new Ghost();
-		Thread ghostThread = new Thread(ghost);
-		ghostThread.start();
-		// multi-threading pacman
-		pacman = new Pacman();
-		Thread pacmanThread = new Thread(pacman);
-		pacmanThread.start();
-		// keyboard controlled pacman
-		NannyKeyboard nannyKeyboard = new NannyKeyboard(pacman);
-		addKeyListener(nannyKeyboard);
-		// timer
-		Timer timer = new Timer(100, this);
-		timer.start();
-		// and a power dot
-		powerDot = new PowerDot();
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
+	}
+	
+	private void background(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 800, 600);
+		g.setColor(new Color(90, 140, 255));
+		// walls
+		g.drawRoundRect(12, 12, 776, 576 - 28, 20, 20);
+		g.drawRoundRect(17, 17, 766, 566 - 28, 20, 20);
+		// dots
+		g.setColor(Color.GRAY);
+		for (int i = 50; i <= 750; i += 50) {
+			for (int j = 50; j < 520; j += 50) {
+				g.fillOval(i, j, 5, 5);
+			}
+		}
 	}
 	
 }

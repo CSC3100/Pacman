@@ -7,15 +7,12 @@
 This program demonstrates multithreading concepts using a Pacman game example. A Timer object manages the Maze panel's repaint cycle at 10 frames per second. Both Pacman and the ghost are implemented as runnable threads, allowing their positions to update automatically. Pacman also utilizes key listeners, enabling user interaction to change its direction dynamically.
 <br>
 
-## Running
-
-Run as:
-```
-java -jar Game
-```
-
 ## User Interface
 
 <p align="center">
 <IMG SRC="https://github.com/CSC3100/Pacman/assets/3814755/95668dee-27bd-4226-b4e7-6a65fca38a77" WIDTH=600>
 </p>
+<br>
+
+## Class Diagram
+Notice <code>Runnable</code>, <code>Thread</code>, and <code>Timer</code>. Timer refresh the Maze every 100 miliseconds while the Pacman and Ghost runnables keep updating their positions.

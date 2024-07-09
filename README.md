@@ -15,4 +15,4 @@ This program demonstrates multithreading concepts using a Pacman game example. A
 <br>
 
 ## Class Diagram
-Notice <code>Runnable</code>, <code>Thread</code>, and <code>Timer</code>. Timer refresh the Maze every 100 miliseconds while the Pacman and Ghost runnables keep updating their positions.
+Notice <code>Runnable</code>, <code>Thread</code>, and <code>Timer</code>. Timer refresh the Maze 10 frames per second while the Pacman and Ghost runnables keep updating their positions.

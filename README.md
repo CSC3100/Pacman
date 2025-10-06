@@ -14,3 +14,10 @@ This program demonstrates multithreading concepts using a Pacman game example. A
 </p>
 <br>
 
+## Class Diagram
+Notice <code>Runnable</code>, <code>Thread</code>, and <code>Timer</code>. Timer refresh the Maze 10 frames per second while the Pacman and Ghost runnables keep updating their positions.
+
+<p align="center">
+<IMG SRC="https://github.com/CSC3100/Pacman/assets/3814755/f0c1c487-e9d3-472f-82d9-0b577ca97f84" WIDTH=600>
+</p>
+<br>
